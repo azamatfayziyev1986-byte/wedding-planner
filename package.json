@@ -1,0 +1,16 @@
+{
+  "name": "wedding-planner-deploy",
+  "version": "1.0.0",
+  "description": "Deployment package for Wedding Planner",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "install-all": "node -e \"const fs=require('fs'),{execSync}=require('child_process');if(fs.existsSync('backend'))execSync('npm --prefix backend install',{stdio:'inherit'});if(fs.existsSync('frontend'))execSync('npm --prefix frontend install',{stdio:'inherit'});\"",
+    "build": "node -e \"const fs=require('fs'),{execSync}=require('child_process');if(fs.existsSync('frontend'))execSync('npm --prefix frontend run build',{stdio:'inherit'});\"",
+    "postinstall": "npm run install-all && npm run build"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
